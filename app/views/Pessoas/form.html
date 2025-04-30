@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<h1>Cadastro de Pessoa</h1>
+
+<form action="/pessoas/salvar">
+	<label>Nome:</label>
+	<input type="text" name="pessoa.nome" />
+	<br />
+	<label>Email:</label>
+	<input type="text" name="pessoa.email" />
+	<br />
+	<input type="submit" />
+</form>
