@@ -4,11 +4,15 @@
 <h1>Cadastro de Pessoa</h1>
 
 <form action="/pessoas/salvar">
-	<label>Nome:</label>
-	<input type="text" name="pessoa.nome" />
-	<br />
-	<label>Email:</label>
-	<input type="text" name="pessoa.email" />
-	<br />
-	<input type="submit" />
+	<div class="mb-3">
+		<label class="form-label">Nome:</label>
+		<input class="form-control" type="text" name="pessoa.nome" />
+	</div>
+	
+	<div class="mb-3">
+		<label class="form-label">Email:</label>
+		<input class="form-control" type="text" name="pessoa.email" />
+	</div>
+	
+	<input class="btn btn-primary" type="submit" />
 </form>
