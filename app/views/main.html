@@ -11,8 +11,12 @@
     </head>
     <body>
     	<div class="container">
+    		<h1>#{get 'title' /}</h1>
+			<hr />
+    	
         	#{doLayout /}
-        </div>
+
+        </div>	
         
         <script src="@{'/public/bootstrap-5.3.6/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
