@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Pessoas' /}
+
+<ul>
+	#{list items: pessoas, as:'p'}
+		<li>${p.nome} (${p.email}) | 
+			<a href="@{Pessoas.remover(p.id)}">Remover</a>
+		</li>
+	#{/list}
+	#{else}
+		<li>Nenhuma pessoa cadastrada</li>
+	#{/else}
+</ul>
+
+<a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar Novo</a>
