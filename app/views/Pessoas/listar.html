@@ -4,6 +4,7 @@
 <ul>
 	#{list items: pessoas, as:'p'}
 		<li>${p.nome} (${p.email}) | 
+			<a href="@{Pessoas.editar(p.id)}">Editar</a> |
 			<a href="@{Pessoas.remover(p.id)}">Remover</a>
 		</li>
 	#{/list}

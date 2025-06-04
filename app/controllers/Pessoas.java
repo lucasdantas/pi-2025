@@ -20,6 +20,11 @@ public class Pessoas extends Controller {
 		render(pessoa);
 	}
 	
+	public static void editar(Long id) {
+		Pessoa p = Pessoa.findById(id);
+		renderTemplate("Pessoas/form.html", p);
+	}
+	
 	public static void salvar(Pessoa pessoa) {
 		if (pessoa.nome != null) {
 			pessoa.nome = pessoa.nome.toUpperCase();		
