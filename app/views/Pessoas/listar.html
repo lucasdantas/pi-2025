@@ -1,6 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoas' /}
 
+<form action="@{Pessoas.listar}">
+	<label>Buscar por nome ou email:</label>
+	<input type="text" name="termo" value="${termo}" />
+	<input type="submit" />
+</form>
+
 <ul>
 	#{list items: pessoas, as:'p'}
 		<li>${p.nome} (${p.email}) | 

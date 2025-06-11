@@ -11,9 +11,16 @@ public class Pessoas extends Controller {
 		render();
 	}
 	
-	public static void listar() {
-		List<Pessoa> pessoas = Pessoa.findAll();
-		render(pessoas);
+	public static void listar(String termo) {
+		List<Pessoa> pessoas = null;
+		if (termo == null) {
+			pessoas = Pessoa.findAll();	
+		} else {
+			pessoas = Pessoa.find("lower(nome) like ?1 "
+					+ "or lower(email) like ?1",
+					"%" + termo.toLowerCase() + "%").fetch();
+		}
+		render(pessoas, termo);
 	}
 
 	public static void detalhar(Pessoa pessoa) {
@@ -39,7 +46,7 @@ public class Pessoas extends Controller {
 	public static void remover(Long id) {
 		Pessoa pessoa = Pessoa.findById(id);
 		pessoa.delete();
-		listar();
+		listar(null);
 	}	
 	
 }
