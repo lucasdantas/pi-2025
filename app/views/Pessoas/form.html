@@ -22,6 +22,12 @@
 			name="pessoa.email" value="${p?.email}" />
 	</div>
 	
+	<div class="mb-3">
+		<label class="form-label">Data de Nascimento:</label>
+		<input class="form-control" type="date"
+			name="pessoa.dataNascimento" value="${p?.dataNascimento}" />
+	</div>
+	
 	<input class="btn btn-primary" type="submit"
 		value="${p ? 'Editar':'Cadastrar'}" />
 </form>
