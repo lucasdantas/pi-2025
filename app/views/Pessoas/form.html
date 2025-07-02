@@ -28,6 +28,18 @@
 			name="pessoa.dataNascimento" value="${p?.dataNascimento}" />
 	</div>
 	
+	<div class="mb-3">
+		<label class="form-label">Departamento:</label>
+		<select class="form-select" name="pessoa.departamento.id">
+			#{list items:departamentos, as:'d'}
+				<option value="${d.id}" 
+					${d.id == p?.departamento.id ? 'selected' : ''}>
+						${d.nome}
+				</option>
+			#{/list}
+		</select>
+	</div>
+	
 	<input class="btn btn-primary" type="submit"
 		value="${p ? 'Editar':'Cadastrar'}" />
 </form>

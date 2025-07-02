@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Departamento;
 import models.Pessoa;
 import models.Status;
 import play.mvc.Controller;
@@ -9,7 +10,8 @@ import play.mvc.Controller;
 public class Pessoas extends Controller {
 	
 	public static void form() {
-		render();
+		List<Departamento> departamentos = Departamento.findAll();
+		render(departamentos);
 	}
 	
 	public static void listar(String termo) {
@@ -31,7 +33,9 @@ public class Pessoas extends Controller {
 	
 	public static void editar(Long id) {
 		Pessoa p = Pessoa.findById(id);
-		renderTemplate("Pessoas/form.html", p);
+		List<Departamento> departamentos = Departamento.findAll();
+		
+		renderTemplate("Pessoas/form.html", p, departamentos);
 	}
 	
 	public static void salvar(Pessoa pessoa) {
