@@ -4,6 +4,7 @@ import java.util.Date;
 
 import models.Departamento;
 import models.Pessoa;
+import models.Projeto;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
@@ -28,6 +29,19 @@ public class Inicializador extends Job {
 			joao.dataNascimento = new Date();
 			joao.departamento = ti;
 			joao.save();
+			
+			Pessoa maria = new Pessoa();
+			maria.nome = "Teixeirinha";
+			maria.email = "teixeirinha@gmail.com";
+			maria.dataNascimento = new Date();
+			maria.departamento = seac;
+			maria.save();
+			
+			Projeto p1 = new Projeto();
+			p1.nome = "Suap";
+			p1.inicio = new Date();
+			p1.fim = new Date();
+			p1.save();
 		}
 	}
 

@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+
+#{set title:'Cadastro de Projeto' /}
+
+<h1>Projeto: ${projeto.nome}</h1>
+<h4>Data de início: ${projeto.inicio}</h4>
+<h4>Data de fim: ${projeto.fim}</h4>
+
+<hr />
+
+<form action="@{Projetos.salvarMembro}" method="post">
+
+	<input type="hidden" name="projetoId" value="${projeto.id}" />
+
+	<select name="pessoaId">
+		#{list items:pessoas, as:'p'}
+			<option value="${p.id}">${p.nome}</option>
+		#{/list}
+	</select>
+	
+	<input type="submit" value="Associar membro" />
+</form>
+
+<hr />
+
+<h4>Membros desse projeto:</h4>
+<ul>
+	#{list items:projeto.membros, as:'m'}
+		<li>${m.nome}</li>
+	#{/list}
+	#{else}
+		<li>Nenhum membro registrado.</li>
+	#{/else}
+</ul>

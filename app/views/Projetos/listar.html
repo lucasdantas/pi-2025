@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Projetos' /}
+
+<ul>
+	#{list items: projetos, as:'p'}
+		<li>${p.nome} | 
+			<a href="@{Projetos.formMembro(p.id)}">Adicionar Membro</a>
+		</li>
+	#{/list}
+	#{else}
+		<li>Nenhum projeto cadastrado</li>
+	#{/else}
+</ul>
