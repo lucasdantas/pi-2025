@@ -26,7 +26,7 @@
 <h4>Membros desse projeto:</h4>
 <ul>
 	#{list items:projeto.membros, as:'m'}
-		<li>${m.nome}</li>
+		<li>${m.nome} | <a href="@{Projetos.removerMembro(projeto.id, m.id)}">Remover</a></li>
 	#{/list}
 	#{else}
 		<li>Nenhum membro registrado.</li>
