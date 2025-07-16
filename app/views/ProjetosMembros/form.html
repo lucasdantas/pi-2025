@@ -8,7 +8,7 @@
 
 <hr />
 
-<form action="@{Projetos.salvarMembro}" method="post">
+<form action="@{ProjetosMembros.salvar}" method="post">
 
 	<input type="hidden" name="projetoId" value="${projeto.id}" />
 
@@ -26,7 +26,7 @@
 <h4>Membros desse projeto:</h4>
 <ul>
 	#{list items:projeto.membros, as:'m'}
-		<li>${m.nome} | <a href="@{Projetos.removerMembro(projeto.id, m.id)}">Remover</a></li>
+		<li>${m.nome} | <a href="@{ProjetosMembros.remover(projeto.id, m.id)}">Remover</a></li>
 	#{/list}
 	#{else}
 		<li>Nenhum membro registrado.</li>

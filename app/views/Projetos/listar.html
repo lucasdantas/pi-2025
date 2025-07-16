@@ -4,7 +4,7 @@
 <ul>
 	#{list items: projetos, as:'p'}
 		<li>${p.nome} | 
-			<a href="@{Projetos.formMembro(p.id)}">Adicionar Membro</a>
+			<a href="@{ProjetosMembros.form(p.id)}">Adicionar Membro</a>
 		</li>
 	#{/list}
 	#{else}
