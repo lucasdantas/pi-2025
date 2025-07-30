@@ -4,26 +4,177 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap-5.3.6/css/bootstrap.min.css'}">
+        
+        <!-- Fonts and icons -->
+	    <script src="@{'/public/kaiadmin-lite-1.2.0/assets/js/plugin/webfont/webfont.min.js'}"></script>
+	    <script>
+	      WebFont.load({
+	        google: { families: ["Public Sans:300,400,500,600,700"] },
+	        custom: {
+	          families: [
+	            "Font Awesome 5 Solid",
+	            "Font Awesome 5 Regular",
+	            "Font Awesome 5 Brands",
+	            "simple-line-icons",
+	          ],
+	          urls: ["@{'/public/kaiadmin-lite-1.2.0/assets/css/fonts.min.css'}"],
+	        },
+	        active: function () {
+	          sessionStorage.fonts = true;
+	        },
+	      });
+	    </script>
+	
+	    <!-- CSS Files -->
+	    <link rel="stylesheet" href="@{'/public/kaiadmin-lite-1.2.0/assets/css/bootstrap.min.css'}" />
+	    <link rel="stylesheet" href="@{'/public/kaiadmin-lite-1.2.0/assets/css/plugins.min.css'}" />
+	    <link rel="stylesheet" href="@{'/public/kaiadmin-lite-1.2.0/assets/css/kaiadmin.min.css'}" />
+        
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     </head>
     <body>
-    	<div class="container">
-    		<p>
-    			${flash.error}
-    		</p>
-    		<p>
-    			${flash.success}
-    		</p>
-    	
-    		<h1>#{get 'title' /}</h1>
-			<hr />
-    	
-        	#{doLayout /}
-
-        </div>	
+      <div class="wrapper">
+	      <!-- Sidebar -->
+	      <div class="sidebar" data-background-color="dark">
+	        <div class="sidebar-logo">
+	          <!-- Logo Header -->
+	          <div class="logo-header" data-background-color="dark">
+	            <a href="@{Pessoas.listar}" class="logo">
+	              <img
+	                src="@{'/public/kaiadmin-lite-1.2.0/assets/img/kaiadmin/logo_light.svg'}"
+	                alt="navbar brand"
+	                class="navbar-brand"
+	                height="20"
+	              />
+	            </a>
+	            <div class="nav-toggle">
+	              <button class="btn btn-toggle toggle-sidebar">
+	                <i class="gg-menu-right"></i>
+	              </button>
+	              <button class="btn btn-toggle sidenav-toggler">
+	                <i class="gg-menu-left"></i>
+	              </button>
+	            </div>
+	            <button class="topbar-toggler more">
+	              <i class="gg-more-vertical-alt"></i>
+	            </button>
+	          </div>
+	          <!-- End Logo Header -->
+	        </div>
+	        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+	          <div class="sidebar-content">
+	            <ul class="nav nav-secondary">
+	              <li class="nav-item active">
+	                <a
+	                  data-bs-toggle="collapse"
+	                  href="#dashboard"
+	                  class="collapsed"
+	                  aria-expanded="false"
+	                >
+	                  <i class="fas fa-home"></i>
+	                  <p>Dashboard</p>
+	                  <span class="caret"></span>
+	                </a>
+	                <div class="collapse" id="dashboard">
+	                  <ul class="nav nav-collapse">
+	                    <li>
+	                      <a href="../demo1/index.html">
+	                        <span class="sub-item">Dashboard 1</span>
+	                      </a>
+	                    </li>
+	                  </ul>
+	                </div>
+	              </li>
+	            </ul>
+	          </div>
+	        </div>
+	      </div>
+	      <!-- End Sidebar -->
+	      
+	      <div class="main-panel">
+	        <div class="main-header">
+	          <div class="main-header-logo">
+	            <!-- Logo Header -->
+	            <div class="logo-header" data-background-color="dark">
+	              <a href="index.html" class="logo">
+	                <img
+	                  src="assets/img/kaiadmin/logo_light.svg"
+	                  alt="navbar brand"
+	                  class="navbar-brand"
+	                  height="20"
+	                />
+	              </a>
+	              <div class="nav-toggle">
+	                <button class="btn btn-toggle toggle-sidebar">
+	                  <i class="gg-menu-right"></i>
+	                </button>
+	                <button class="btn btn-toggle sidenav-toggler">
+	                  <i class="gg-menu-left"></i>
+	                </button>
+	              </div>
+	              <button class="topbar-toggler more">
+	                <i class="gg-more-vertical-alt"></i>
+	              </button>
+	            </div>
+	            <!-- End Logo Header -->
+	          </div>
+	         </div>
+	         
+	         <div class="container">
+	         	<div class="page-inner">
+		         	#{if flash.error}
+					  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+					    <strong>Algo deu errado:</strong> ${flash.error}
+					    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					  </div>
+					#{/if}
+		    		
+		    		#{if flash.success}
+					  <div class="alert alert-success alert-dismissible fade show" role="alert">
+					    <strong>Sucesso!</strong> ${flash.success}
+					    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					  </div>
+					#{/if}
+		    	
+		    		<h1>#{get 'title' /}</h1>
+					<hr />
+		    	
+		        	#{doLayout /}
+		        </div>
+	         </div>
+	         
+	         <footer class="footer">
+	          <div class="container-fluid d-flex justify-content-between">
+	            <nav class="pull-left">
+	              <ul class="nav">
+	                <li class="nav-item">
+	                  <a class="nav-link" href="http://www.themekita.com">
+	                    ThemeKita
+	                  </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link" href="#"> Help </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link" href="#"> Licenses </a>
+	                </li>
+	              </ul>
+	            </nav>
+	            <div class="copyright">
+	              2024, made with <i class="fa fa-heart heart text-danger"></i> by
+	              <a href="http://www.themekita.com">ThemeKita</a>
+	            </div>
+	            <div>
+	              Distributed by
+	              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+	            </div>
+	          </div>
+	        </footer>
+	         
+	      </div>
+      </div>
         
         <script src="@{'/public/bootstrap-5.3.6/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>

@@ -45,6 +45,7 @@ public class Pessoas extends Controller {
 		if (pessoa.email != null) {
 			pessoa.email = pessoa.email.toLowerCase();
 		}
+		flash.success(pessoa.nome + " foi cadastrada com sucesso.");
 		pessoa.save();
 		detalhar(pessoa);
 	}
