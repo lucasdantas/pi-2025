@@ -6,7 +6,9 @@ import java.util.List;
 import models.Pessoa;
 import models.Projeto;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Seguranca.class)
 public class ProjetosMembros extends Controller {
 	
 	public static void form(Long id) {

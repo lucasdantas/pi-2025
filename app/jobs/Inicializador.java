@@ -26,6 +26,8 @@ public class Inicializador extends Job {
 			Pessoa joao = new Pessoa();
 			joao.nome = "João da Silva";
 			joao.email = "joaossilva@gmail.com";
+			joao.login = "joao";
+			joao.senha = "1111";
 			joao.dataNascimento = new Date();
 			joao.departamento = ti;
 			joao.save();
@@ -33,6 +35,8 @@ public class Inicializador extends Job {
 			Pessoa maria = new Pessoa();
 			maria.nome = "Teixeirinha";
 			maria.email = "teixeirinha@gmail.com";
+			maria.login = "teixeira";
+			maria.senha = "1111";
 			maria.dataNascimento = new Date();
 			maria.departamento = seac;
 			maria.save();

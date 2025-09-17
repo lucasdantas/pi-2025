@@ -20,6 +20,9 @@ public class Pessoa extends Model {
 	
 	public String nome;
 	public String email;
+	
+	public String login;
+	public String senha;
 
 	@ManyToOne
 	public Departamento departamento;
