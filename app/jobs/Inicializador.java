@@ -3,6 +3,7 @@ package jobs;
 import java.util.Date;
 
 import models.Departamento;
+import models.Perfil;
 import models.Pessoa;
 import models.Projeto;
 import play.jobs.Job;
@@ -30,6 +31,7 @@ public class Inicializador extends Job {
 			joao.senha = "1111";
 			joao.dataNascimento = new Date();
 			joao.departamento = ti;
+			joao.perfil = Perfil.ADMINISTRADOR;
 			joao.save();
 			
 			Pessoa maria = new Pessoa();

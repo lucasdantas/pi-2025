@@ -7,10 +7,12 @@ import models.Pessoa;
 import models.Status;
 import play.mvc.Controller;
 import play.mvc.With;
+import security.Administrador;
 
 @With(Seguranca.class)
 public class Pessoas extends Controller {
 	
+	@Administrador
 	public static void form() {
 		List<Departamento> departamentos = Departamento.findAll();
 		render(departamentos);
@@ -40,6 +42,7 @@ public class Pessoas extends Controller {
 		renderTemplate("Pessoas/form.html", p, departamentos);
 	}
 	
+	@Administrador
 	public static void salvar(Pessoa pessoa) {
 		if (pessoa.nome != null) {
 			pessoa.nome = pessoa.nome.toUpperCase();		
