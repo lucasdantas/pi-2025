@@ -5,6 +5,7 @@ import java.util.List;
 import models.Departamento;
 import models.Pessoa;
 import models.Status;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 import security.Administrador;
@@ -43,13 +44,17 @@ public class Pessoas extends Controller {
 	}
 	
 	@Administrador
-	public static void salvar(Pessoa pessoa) {
-		if (pessoa.nome != null) {
-			pessoa.nome = pessoa.nome.toUpperCase();		
+	public static void salvar(@Valid Pessoa pessoa) {
+
+		if (validation.hasErrors()) {
+			params.flash();
+			validation.keep();
+			form();
 		}
-		if (pessoa.email != null) {
-			pessoa.email = pessoa.email.toLowerCase();
-		}
+		
+		pessoa.nome = pessoa.nome.toUpperCase();		
+		pessoa.email = pessoa.email.toLowerCase();
+			
 		flash.success(pessoa.nome + " foi cadastrada com sucesso.");
 		pessoa.save();
 		detalhar(pessoa);

@@ -14,12 +14,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import play.data.validation.Email;
+import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pessoa extends Model {
 	
+	@Required
+	@MinSize(3)
 	public String nome;
+	
+	@Required
+	@Email
 	public String email;
 	
 	@OneToOne

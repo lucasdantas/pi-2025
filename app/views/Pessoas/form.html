@@ -7,25 +7,40 @@
 	#{set title:'Cadastro de Pessoa' /}
 #{/else}
 
+#{ifErrors}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  <ul>
+		#{errors}
+			<li>${error.key} - ${error}</li>
+		#{/errors}
+	  </ul>
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+#{/ifErrors}
+
 <form action="@{Pessoas.salvar}">
 	<input type="hidden" name="pessoa.id" value="${p?.id}" />
 
 	<div class="mb-3">
 		<label class="form-label">Nome:</label>
 		<input class="form-control" type="text"
-			name="pessoa.nome" value="${p?.nome}" />
+			name="pessoa.nome"
+			value="${flash['pessoa.nome'] ? flash['pessoa.nome'] : p?.nome}" />
 	</div>
+	<span class="error">#{error 'pessoa.nome' /}</span>
 	
 	<div class="mb-3">
 		<label class="form-label">Email:</label>
 		<input class="form-control" type="text"
-			name="pessoa.email" value="${p?.email}" />
+			name="pessoa.email"
+			value="${flash['pessoa.email'] ? flash['pessoa.email'] : p?.email}" />
 	</div>
 	
 	<div class="mb-3">
 		<label class="form-label">Data de Nascimento:</label>
 		<input class="form-control" type="date"
-			name="pessoa.dataNascimento" value="${p?.dataNascimento}" />
+			name="pessoa.dataNascimento"
+			value="${flash['pessoa.dataNascimento'] ? flash['pessoa.dataNascimento'] : p?.dataNascimento}" />
 	</div>
 	
 	<div class="mb-3">
