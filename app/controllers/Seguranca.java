@@ -20,8 +20,8 @@ public class Seguranca extends Controller {
       	   String perfil = session.get("usuarioPerfil");
       	   Administrador adminAnnotation = getActionAnnotation(Administrador.class);
       	   if (adminAnnotation != null && 
-      			   !Perfil.ADMINISTRADOR.name().equals(perfil)) {
-              forbidden("Acesso restrito aos administradores do sistema");
+      			   !Perfil.RESPONSAVEL.name().equals(perfil)) {
+              forbidden("Acesso restrito aos responsáveis");
       	    }
  	}
 

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -21,11 +22,8 @@ public class Pessoa extends Model {
 	public String nome;
 	public String email;
 	
-	public String login;
-	public String senha;
-	
-	@Enumerated(EnumType.STRING)
-	public Perfil perfil;
+	@OneToOne
+	public Usuario usuario;
 
 	@ManyToOne
 	public Departamento departamento;
@@ -41,7 +39,6 @@ public class Pessoa extends Model {
 	
 	public Pessoa() {
 		this.status = Status.ATIVO;
-		this.perfil = Perfil.ASSISTENTE;
 	}
 	
 	public int getIdade() {

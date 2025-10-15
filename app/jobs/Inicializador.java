@@ -6,6 +6,8 @@ import models.Departamento;
 import models.Perfil;
 import models.Pessoa;
 import models.Projeto;
+import models.Responsavel;
+import models.Usuario;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
@@ -24,23 +26,27 @@ public class Inicializador extends Job {
 			Departamento seac = new Departamento("SEAC", 102);
 			seac.save();
 			
-			Pessoa joao = new Pessoa();
-			joao.nome = "João da Silva";
-			joao.email = "joaossilva@gmail.com";
-			joao.login = "joao";
-			joao.senha = "1111";
-			joao.dataNascimento = new Date();
-			joao.departamento = ti;
-			joao.perfil = Perfil.ADMINISTRADOR;
+			Usuario usuarioJoao = new Usuario();
+			usuarioJoao.login = "joao";
+			usuarioJoao.senha = "1111";
+			usuarioJoao.perfil = Perfil.RESPONSAVEL;
+			usuarioJoao.save();
+			
+			Responsavel joao = new Responsavel();
+			joao.usuario = usuarioJoao;
 			joao.save();
+			
+			Usuario usuarioMaria = new Usuario();
+			usuarioMaria.login = "teixeira";
+			usuarioMaria.senha = "1111";
+			usuarioMaria.save();
 			
 			Pessoa maria = new Pessoa();
 			maria.nome = "Teixeirinha";
 			maria.email = "teixeirinha@gmail.com";
-			maria.login = "teixeira";
-			maria.senha = "1111";
 			maria.dataNascimento = new Date();
 			maria.departamento = seac;
+			maria.usuario = usuarioMaria;
 			maria.save();
 			
 			Projeto p1 = new Projeto();
